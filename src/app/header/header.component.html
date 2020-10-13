@@ -25,7 +25,7 @@
   <div class="title-wrapper">
     <div class="container">
       <img [src]="logosrc" class="pull-left logo"
-           (click)="changeName()" [title]="sitename">
+           (click)="changeName($event)" [title]="sitename">
       <div class="pull-left">
         <h1><a href="http://blog.miniasp.com/">{{ sitename }}</a></h1>
         <h3 [innerHTML]="subtitle"></h3>
