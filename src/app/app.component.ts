@@ -77,4 +77,8 @@ export class AppComponent {
   doSearch(str: string): void {
     this.keyword = str;
   }
+
+  deletePost(id: number): void {
+    this.data = this.data.filter(value => value.id != id);
+  }
 }
