@@ -1,11 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnChanges {
 
   logosrc = '/assets/images/logo.png';
 
@@ -20,6 +20,9 @@ export class HeaderComponent implements OnInit {
     // setTimeout(() => {
     //   this.sitename = 'OK!!';
     // }, 2000);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
   }
 
   changeName($event: MouseEvent): void {
