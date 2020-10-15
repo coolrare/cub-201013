@@ -18,6 +18,7 @@ const routes: Routes = [
       { path: 'color/:type', component: ColorComponent }
     ]
   },
+  { path: 'utilities', loadChildren: () => import('./utilities/utilities.module').then(m => m.UtilitiesModule) },
   { path: '**', component: NotFoundComponent }
 ];
 
