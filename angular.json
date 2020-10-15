@@ -20,7 +20,6 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
-              "src/blog-index.html",
               "src/api",
               "src/favicon.ico",
               "src/assets"
