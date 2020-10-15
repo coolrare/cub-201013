@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { DataService } from './data.service';
 
 @Component({
   selector: 'app-root',
@@ -14,10 +14,10 @@ export class AppComponent implements OnInit {
 
   data: any[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private datasvc: DataService) {}
 
   ngOnInit(): void {
-    this.http.get<any[]>('/api/articles.json').subscribe(result => {
+    this.datasvc.getArticles().subscribe(result => {
       this.data = result;
     });
   }
