@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { chartAreaDemo } from './chartAreaDemo';
 import { chartPieDemo } from './chartPieDemo';
 
@@ -9,6 +10,8 @@ import { chartPieDemo } from './chartPieDemo';
 })
 export class AppComponent implements OnInit {
   title = 'demo1';
+
+  constructor() { }
 
   ngOnInit(): void {
   }
