@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   logosrc = '/assets/images/logo.png';
-  sitename = 'Hello World';
+
+  @Input() sitename = 'Hello World';
+
   subtitle = '記載著 Will 在網路世界的學習心得與技術分享';
   counter = 12;
 
