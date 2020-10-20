@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -29,6 +30,12 @@ export class LoginComponent implements OnInit, OnDestroy {
   doLogin() {
     localStorage.setItem('token', '123123123213');
     this.router.navigateByUrl(this.route.snapshot.queryParamMap.get('returnUrl'));
+  }
+
+  doSubmit(form: NgForm) {
+    if (form.valid) {
+      // TODO: HttpClient post
+    }
   }
 
 }
