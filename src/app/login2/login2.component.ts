@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -25,23 +25,10 @@ export class Login2Component implements OnInit, OnDestroy {
     document.body.className = 'bg-gradient-primary';
 
     this.form = this.fb.group({
-      email: this.fb.control('33', {
-        // updateOn: 'blur',
-        validators: [
-          Validators.required,
-          Validators.email,
-          Validators.minLength(3),
-          Validators.maxLength(50)
-        ]
-      }),
-      pwd: ['444', [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(16)
-        ]
-      ],
+      users: this.fb.array([]),
       rememberMe: true
     });
+    this.addUser();
   }
 
   ngOnDestroy(): void {
@@ -53,6 +40,23 @@ export class Login2Component implements OnInit, OnDestroy {
       localStorage.setItem('token', '123123123213');
       this.router.navigateByUrl(this.route.snapshot.queryParamMap.get('returnUrl'));
     }
+  }
+
+  addUser() {
+    const fa = this.form.get('users') as FormArray;
+    fa.push(
+      this.fb.group({
+        email: this.fb.control('', {
+          // updateOn: 'blur',
+          validators: [
+            Validators.required,
+            Validators.email,
+            Validators.minLength(3),
+            Validators.maxLength(50)
+          ]
+        }),
+        pwd: ['', [ Validators.required, Validators.minLength(3), Validators.maxLength(16)]],
+      }));
   }
 
 }
