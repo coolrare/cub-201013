@@ -15,14 +15,24 @@
                 <pre>data = {{ data | json }}</pre>
                 <form class="user">
                   <div class="form-group">
-                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                    <input type="email" class="form-control form-control-user" [class.is-invalid]="mEmail.invalid" id="exampleInputEmail"
                            aria-describedby="emailHelp" placeholder="Enter Email Address..."
-                           name="email" [(ngModel)]="data.email" required email>
+                           name="email" [(ngModel)]="data.email" #mEmail="ngModel" required email>
+                    <pre>mEmail.value = {{ mEmail.value }}
+mEmail.valid = {{ mEmail.valid }}
+mEmail.invalid = {{ mEmail.invalid }}
+mEmail.pristine = {{ mEmail.pristine }}
+mEmail.dirty = {{ mEmail.dirty }}
+mEmail.touched = {{ mEmail.touched }}
+mEmail.untouched = {{ mEmail.untouched }}
+mEmail.enabled = {{ mEmail.enabled }}
+mEmail.disabled = {{ mEmail.disabled }}
+mEmail.errors = {{ mEmail.errors | json }}</pre>
                   </div>
                   <div class="form-group">
                     <input type="password" class="form-control form-control-user" id="exampleInputPassword"
                            placeholder="Password"
-                           name="pwd" [(ngModel)]="data.pwd" required>
+                           name="pwd" [(ngModel)]="data.pwd" #mPwd="ngModel" required>
                   </div>
                   <div class="form-group">
                     <div class="custom-control custom-checkbox small">
