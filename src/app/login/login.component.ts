@@ -7,6 +7,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
+  data: any = {
+    email: 'doggy.huang@gmail.com',
+    pwd: '123123',
+    rememberMe: true
+  };
+
   existingBodyClassName = '';
 
   constructor(private router: Router, private route: ActivatedRoute) { }
