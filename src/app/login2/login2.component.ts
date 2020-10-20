@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup, FormGroupDirective, NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -25,8 +25,21 @@ export class Login2Component implements OnInit, OnDestroy {
     document.body.className = 'bg-gradient-primary';
 
     this.form = this.fb.group({
-      email: '123',
-      pwd: '444',
+      email: this.fb.control('33', {
+        // updateOn: 'blur',
+        validators: [
+          Validators.required,
+          Validators.email,
+          Validators.minLength(3),
+          Validators.maxLength(50)
+        ]
+      }),
+      pwd: ['444', [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(16)
+        ]
+      ],
       rememberMe: true
     });
   }
