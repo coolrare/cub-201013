@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, FormGroupDirective, NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -7,6 +7,8 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./login2.component.css']
 })
 export class Login2Component implements OnInit, OnDestroy {
+
+  form: FormGroup;
 
   data: any = {
     email: '',
@@ -16,18 +18,24 @@ export class Login2Component implements OnInit, OnDestroy {
 
   existingBodyClassName = '';
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.existingBodyClassName = document.body.className;
     document.body.className = 'bg-gradient-primary';
+
+    this.form = this.fb.group({
+      email: '123',
+      pwd: '444',
+      rememberMe: true
+    });
   }
 
   ngOnDestroy(): void {
     document.body.className = this.existingBodyClassName;
   }
 
-  doLogin(form: NgForm) {
+  doLogin(form: FormGroupDirective) {
     if (form.valid) {
       localStorage.setItem('token', '123123123213');
       this.router.navigateByUrl(this.route.snapshot.queryParamMap.get('returnUrl'));
