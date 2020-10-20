@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate {
     if (localStorage.getItem('token')) {
       return true;
     } else {
-      return this.router.parseUrl('/login');
+      return this.router.parseUrl('/login?returnUrl=' + state.url);
     }
   }
 
