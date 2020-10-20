@@ -23,7 +23,9 @@ form.untouched = {{ form.untouched }}
 form.enabled = {{ form.enabled }}
 form.disabled = {{ form.disabled }}
 form.errors = {{ form.errors | json }}</pre>
-                <form class="user" #form="ngForm" (ngSubmit)="doSubmit(form)">
+                <form class="user" #form="ngForm" (ngSubmit)="doLogin(form)">
+                  <div ngModelGroup="group1" #mGroup1="ngModelGroup">
+
                   <div class="form-group">
                     <input type="email" class="form-control form-control-user" [class.is-invalid]="mEmail.invalid"
                            aria-describedby="emailHelp" placeholder="Enter Email Address..."
@@ -50,6 +52,9 @@ mEmail.errors = {{ mEmail.errors | json }}</pre>
                            placeholder="Password"
                            name="pwd" [(ngModel)]="data.pwd" #mPwd="ngModel" required>
                   </div>
+
+                </div>
+
                   <div class="form-group">
                     <div class="custom-control custom-checkbox small">
                       <input type="checkbox" class="custom-control-input" id="customCheck" name="rememberMe"
@@ -57,7 +62,7 @@ mEmail.errors = {{ mEmail.errors | json }}</pre>
                       <label class="custom-control-label" for="customCheck">Remember Me</label>
                     </div>
                   </div>
-                  <button type="button" (click)="doLogin()" class="btn btn-primary btn-user btn-block"> Login </button>
+                  <button type="submit" [disabled]="form.invalid" class="btn btn-primary btn-user btn-block"> Login </button>
                   <hr>
                   <a href="index.html" class="btn btn-google btn-user btn-block">
                     <i class="fab fa-google fa-fw"></i> Login with Google </a>
