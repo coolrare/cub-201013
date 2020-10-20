@@ -27,10 +27,10 @@ form.errors = {{ form.errors | json }}</pre>
                   <div ngModelGroup="group1" #mGroup1="ngModelGroup">
 
                   <div class="form-group">
-                    <input type="email" class="form-control form-control-user" [class.is-invalid]="mEmail.invalid"
+                    <input type="email" class="form-control form-control-user" [class.is-invalid]="form.submitted && mEmail.invalid"
                            aria-describedby="emailHelp" placeholder="Enter Email Address..."
                            name="email" [(ngModel)]="data.email" #mEmail="ngModel" required email minlength="3" maxlength="50">
-                    <div *ngIf="mEmail.invalid" class="invalid-feedback">
+                    <div *ngIf="form.submitted && mEmail.invalid" class="invalid-feedback">
                       <span *ngIf="mEmail.errors?.required">請輸入 E-mail 地址</span>
                       <span *ngIf="mEmail.errors?.email">請輸入正確的 E-mail 地址格式</span>
                       <span *ngIf="mEmail.errors?.minlength">請輸入至少 {{mEmail.errors?.minlength.requiredLength}} 個字元，您目前輸入 {{mEmail.errors?.minlength.actualLength}} 個</span>
@@ -48,7 +48,7 @@ mEmail.disabled = {{ mEmail.disabled }}
 mEmail.errors = {{ mEmail.errors | json }}</pre>
                   </div>
                   <div class="form-group">
-                    <input type="password" class="form-control form-control-user" id="exampleInputPassword"
+                    <input type="password" class="form-control form-control-user" [class.is-invalid]="form.submitted && mPwd.invalid"
                            placeholder="Password"
                            name="pwd" [(ngModel)]="data.pwd" #mPwd="ngModel" required>
                   </div>
@@ -62,7 +62,7 @@ mEmail.errors = {{ mEmail.errors | json }}</pre>
                       <label class="custom-control-label" for="customCheck">Remember Me</label>
                     </div>
                   </div>
-                  <button type="submit" [disabled]="form.invalid" class="btn btn-primary btn-user btn-block"> Login </button>
+                  <button type="submit" [disabled]="false && form.invalid" class="btn btn-primary btn-user btn-block"> Login </button>
                   <hr>
                   <a href="index.html" class="btn btn-google btn-user btn-block">
                     <i class="fab fa-google fa-fw"></i> Login with Google </a>

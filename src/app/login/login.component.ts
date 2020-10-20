@@ -9,8 +9,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class LoginComponent implements OnInit, OnDestroy {
 
   data: any = {
-    email: 'doggy.huang@gmail.com',
-    pwd: '123123',
+    email: '',
+    pwd: '',
     rememberMe: true
   };
 
@@ -27,14 +27,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     document.body.className = this.existingBodyClassName;
   }
 
-  doLogin() {
-    localStorage.setItem('token', '123123123213');
-    this.router.navigateByUrl(this.route.snapshot.queryParamMap.get('returnUrl'));
-  }
-
-  doSubmit(form: NgForm) {
+  doLogin(form: NgForm) {
     if (form.valid) {
-      // TODO: HttpClient post
+      localStorage.setItem('token', '123123123213');
+      this.router.navigateByUrl(this.route.snapshot.queryParamMap.get('returnUrl'));
     }
   }
 
