@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -37,7 +38,7 @@ export class Login2Component implements OnInit, OnDestroy {
 
   doLogin(form: FormGroupDirective) {
     if (form.valid) {
-      localStorage.setItem('token', '123123123213');
+      localStorage.setItem('token', environment.apiBase + '123123123213');
       this.router.navigateByUrl(this.route.snapshot.queryParamMap.get('returnUrl'));
     }
   }
