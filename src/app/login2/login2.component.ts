@@ -1,7 +1,8 @@
 import { environment } from './../../environments/environment';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, FormGroupDirective, NgForm, ValidationErrors, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { TaiwanIdValidator } from './TaiwanIdValidator';
 
 @Component({
   templateUrl: './login2.component.html',
@@ -65,9 +66,9 @@ export class Login2Component implements OnInit, OnDestroy {
           // updateOn: 'blur',
           validators: [
             Validators.required,
-            Validators.email,
-            Validators.minLength(3),
-            Validators.maxLength(50)
+            TaiwanIdValidator,
+            Validators.minLength(10),
+            Validators.maxLength(10)
           ]
         }),
         pwd: ['', [ Validators.required, Validators.minLength(3), Validators.maxLength(16)]],

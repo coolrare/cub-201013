@@ -38,10 +38,13 @@ form.errors = {{ form.errors | json }}</pre>
                                 formControlName="email">
 
                           <div *ngIf="grp.get('email').invalid" class="invalid-feedback">
-                            <span *ngIf="grp.get('email').errors?.required">請輸入 E-mail 地址</span>
+                            <span *ngIf="grp.get('email').errors?.TaiwanIdValidator">請輸入正確的身分證字號</span>
+                            <span *ngIf="grp.get('email').errors?.required">請輸入此欄位</span>
                             <span *ngIf="grp.get('email').errors?.email">請輸入正確的 E-mail 地址格式</span>
                             <span *ngIf="grp.get('email').errors?.minlength">請輸入至少 {{grp.get('email').errors?.minlength.requiredLength}} 個字元，您目前輸入 {{grp.get('email').errors?.minlength.actualLength}} 個</span>
                           </div>
+
+                          <pre>{{ grp.get('email').errors | json }}</pre>
                         </div>
                         <div class="form-group">
                           <input type="password" class="form-control form-control-user" id="exampleInputPassword"
