@@ -29,8 +29,9 @@ form.errors = {{ form.errors | json }}</pre>
                   <div class="form-group">
                     <input type="email" class="form-control form-control-user" [class.is-invalid]="form.submitted && mEmail.invalid"
                            aria-describedby="emailHelp" placeholder="Enter Email Address..."
-                           name="email" [(ngModel)]="data.email" #mEmail="ngModel" required email minlength="3" maxlength="50">
+                           name="email" [(ngModel)]="data.email" #mEmail="ngModel" required taiwanId minlength="3" maxlength="50">
                     <div *ngIf="form.submitted && mEmail.invalid" class="invalid-feedback">
+                      <span *ngIf="mEmail.errors?.TaiwanIdValidator">請輸入合法的身份證字號</span>
                       <span *ngIf="mEmail.errors?.required">請輸入 E-mail 地址</span>
                       <span *ngIf="mEmail.errors?.email">請輸入正確的 E-mail 地址格式</span>
                       <span *ngIf="mEmail.errors?.minlength">請輸入至少 {{mEmail.errors?.minlength.requiredLength}} 個字元，您目前輸入 {{mEmail.errors?.minlength.actualLength}} 個</span>
