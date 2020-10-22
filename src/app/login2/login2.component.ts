@@ -11,9 +11,17 @@ export class Login2Component implements OnInit, OnDestroy {
 
   form: FormGroup;
 
-  data: any = {
-    email: '',
-    pwd: '',
+  data = {
+    users: [
+      {
+        email: 'user1@example.com',
+        pwd: '123123'
+      },
+      {
+        email: 'user2@example.com',
+        pwd: '321321'
+      }
+    ],
     rememberMe: true
   };
 
@@ -29,7 +37,13 @@ export class Login2Component implements OnInit, OnDestroy {
       users: this.fb.array([]),
       rememberMe: true
     });
-    this.addUser();
+
+    // tslint:disable-next-line: prefer-for-of
+    for (let i = 0; i < this.data.users.length; i++) {
+      this.addUser();
+    }
+
+    this.form.reset(this.data);
   }
 
   ngOnDestroy(): void {
